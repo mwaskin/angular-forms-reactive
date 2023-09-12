@@ -29,6 +29,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 -- The validators are methods on the Validators class, imported from angular
 -- The method for each validator is not called when passed; it's only referenced for Angular to call behind the scenes when checking the validation
 */
+/* ACCESSING FORMCONTROL DATA
+-- Use FormGroup.get() method
+-- Pass (as a string) the name of the FormControl to access
+-- Then access the properties of that control (.valid, .touched, etc.)
+-- Can be used in template to add validation error messages with *ngIf directive
+*/
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
