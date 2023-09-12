@@ -18,6 +18,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 -- bind the template <form> to the TS FormGroup with [formGroup] selector (from FormGroupDirective), passing it the name of the FormGroup property in TS
 -- sync the template inputs with their respective FormControl by binding the formControlName directive, passing it the name of the corresponding name of the FormControl in TS
 */
+/* SUBMITTING THE FORM
+-- Similar to TD approach
+-- Bind (ngSubmit) event to <form> and pass submission handler method
+-- Difference is that the form was defined in the component's TS class, so don't need to create and pass a local ref for the form to the handler
+*/
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
@@ -28,5 +33,9 @@ export class AppComponent implements OnInit {
       email: new FormControl(null),
       gender: new FormControl('male'),
     });
+  }
+
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
