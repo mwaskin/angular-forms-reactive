@@ -35,14 +35,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 -- Then access the properties of that control (.valid, .touched, etc.)
 -- Can be used in template to add validation error messages with *ngIf directive
 */
+/* GROUPING CONTROLS
+-- group related controls by nesting a child FormGroup inside the main parent FormGroup
+-- In template, wrap the grouped controls in a container and bind the formGroupName directive, passing it the name of the child FormGroup
+-- Now the control is accessed by calling parentFG.childFG; for example, signupForm.get('userData.username')
+*/
 export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      userData: new FormGroup({
+        username: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email]),
+      }),
       gender: new FormControl('male'),
     });
   }
